@@ -1,0 +1,144 @@
+@model APERROS.Models.Usuario;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IniciarSesion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form asp-controller="Inicio" asp-action="Registrarse" method="post">
+
+                <h1>Crea una cuenta</h1>
+                <input class="form-control mb-3" type="text" placeholder="Primer Nombre" asp-for="Nombre1" required />
+                <input class="form-control mb-3" type="text" placeholder="Segundo Nombre" asp-for="Nombre2" />
+                <input class="form-control mb-3" type="text" placeholder="Primer Apellido" asp-for="Apell1" required />
+                <input class="form-control mb-3" type="text" placeholder="Segundo Apellido" asp-for="Apell2" />
+                <input class="form-control mb-3" type="text" placeholder="Email" required asp-for="Email" />
+                <input class="form-control mb-3" type="password" placeholder="Password" required asp-for="Password" />
+                Acepto Términos y condiciones de <a href="@Url.Action("Privacy","Inicio")"> GGAMEZ</a> <input type="checkbox" id="miCasilla" name="miCasilla" value="valor_opcional" required>
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary" type="submit">Registrate</button>
+                </div>
+                @if (ViewData["Mensaje"] != null)
+                {
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+                        </div>
+                    </div>
+                }
+               
+
+               
+
+            </form>
+            
+        </div>
+        <div class="form-container sign-in">
+            <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+
+                <h1>Ingresar</h1>
+                <input class="form-control mb-3" type="text" placeholder="Correo" maxlength="100" required name="correo" />
+                <input class="form-control mb-3" type="password" placeholder="Contraseña" maxlength="500" required name="clave" />
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary" type="submit">Iniciar Sesion</button>                   
+                </div>
+                @if (ViewData["Mensaje"] != null)
+                {
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+                        </div>
+                    </div>
+                }
+               
+
+            </form>
+            <form>
+                 
+                    
+                <input type="email" placeholder="Correo">
+                <input type="password" placeholder="Contraseña">
+               
+                
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Bienvenido!</h1>
+                    <p>¿Ya tienes cuenta? Inicia sesión y continua con el seguimiento de tu mascota.</p>
+                    <button class="" id="login">Ingresar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bienvenido!</h1>
+                    <p>¿No tienes cuenta? Registra tus datos para ingresar a la página y comenzar con el seguimiento de tu mascota.</p>
+                    <button class="primary" id="register">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/script.js"></script>
+
+
+
+    <!--
+    <div class="container mt-5 pt-5">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+
+                <div class="card">
+                    <div class="card-header">
+                        Iniciar Sesion
+                    </div>
+                    <div class="card-body">
+
+                        <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+
+                            <input class="form-control mb-3" type="text" placeholder="Correo" maxlength="100" required name="correo" />
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" maxlength="500" required name="clave" />
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            ¿No tienes una cuenta? <a href="@Url.Action("Registrarse","Inicio")"> Registrate!</a>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div> 
+    -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
